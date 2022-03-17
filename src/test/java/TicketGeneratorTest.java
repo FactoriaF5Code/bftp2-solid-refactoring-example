@@ -46,4 +46,25 @@ public class TicketGeneratorTest {
                         """)
         );
     }
+
+    @Test
+    void comboMenuHasAFixedPriceOf13Euro() {
+
+        var items = List.of(
+                new Item("Pizza Margherita", 10),
+                new Item("Patatas Fritas", 2),
+                new Item("Cocacola", 3)
+        );
+
+        var ticketGenerator = new TicketGenerator();
+
+        var ticket = ticketGenerator.generateTicket(items);
+
+        assertThat(ticket,
+                equalTo("""
+                        Products: combo menu
+                        Total: 13 euro
+                        """)
+        );
+    }
 }
